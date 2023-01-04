@@ -1,27 +1,39 @@
-import { Configuration, OpenAIApi } from "openai";
+import { Configuration, OpenAIApi } from 'openai';
 import * as express from 'express';
+
 export const router = express.Router();
 
 const configuration = new Configuration({
-    // apiKey: process.env.OPENAI_API_KEY,
-    apiKey: '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',
-  });
+  // apiKey: process.env.OPENAI_API_KEY,
+  apiKey: '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',
+});
 const openai = new OpenAIApi(configuration);
 
-  router.get("/chat", async (req, res) => {
+router.get('/chat', async (req, res, next) => {
+  try {
     const { message } = req.query;
+
+    if (!message || message === '') {
+      throw new Error('No message provided');
+    }
+
     const response = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: 'text-davinci-003',
       prompt: `${message}`,
       max_tokens: 100,
       temperature: 0,
     });
 
-
     if (response.data) {
       if (response.data.choices) {
-        res.send({message: response.data.choices[0].text});
+        res.send({
+          answer: response.data.choices[0].text,
+          question: message,
+          timestamp: new Date().toISOString(),
+        });
       }
     }
-  });
-
+  } catch (e) {
+    next(e);
+  }
+});

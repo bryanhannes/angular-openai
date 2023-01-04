@@ -45,14 +45,17 @@
       "@angular-image-generation/moderation/type-moderation": [
         "libs/moderation/type-moderation/src/index.ts"
       ],
-      "@angular-image-generation/ui-library/feat-button": [
-        "libs/ui-library/feat-button/src/index.ts"
-      ],
       "@angular-image-generation/ui-library/feat-header": [
         "libs/ui-library/feat-header/src/index.ts"
       ],
-      "@angular-image-generation/ui-library/feat-textarea": [
-        "libs/ui-library/feat-textarea/src/index.ts"
+      "@angular-image-generation/ui-library/feat-spinner": [
+        "libs/ui-library/feat-spinner/src/index.ts"
+      ],
+      "@angular-image-generation/ui-library/util-loading": [
+        "libs/ui-library/util-loading/src/index.ts"
+      ],
+      "@angular-image-generation/ui-library/util-vm": [
+        "libs/ui-library/util-vm/src/index.ts"
       ]
     }
   },

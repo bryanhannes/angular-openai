@@ -9,13 +9,21 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-router.get('/image', async (req, res) => {
-  const { prompt } = req.query;
-  console.log(prompt);
-  const response = await openai.createImage({
-    prompt: `${prompt}`,
-    n: 2,
-  });
+router.get('/image', async (req, res, next) => {
+  try {
+    const { prompt } = req.query;
 
-  res.send(response.data);
+    if (!prompt) {
+      throw new Error('No prompt provided');
+    }
+
+    const response = await openai.createImage({
+      prompt: `${prompt}`,
+      n: 2,
+    });
+
+    res.send(response.data);
+  } catch (e) {
+    next(e);
+  }
 });

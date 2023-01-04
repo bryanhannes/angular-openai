@@ -20,6 +20,7 @@ type PageViewModel = {
   error: string | null;
   chatMessages: ChatMessage[];
 };
+
 @Component({
   selector: 'app-chat',
   standalone: true,
@@ -41,14 +42,14 @@ export class ChatSmartComponent {
   });
 
   // Source
-  private loading$$ = new BehaviorSubject(false);
-  private error$$ = new BehaviorSubject<string | null>(null);
-  private prompt$$ = new BehaviorSubject('');
-  private prompt$ = this.prompt$$.asObservable();
-  private chatMessages$$ = new BehaviorSubject<ChatMessage[]>([]);
+  private readonly loading$$ = new BehaviorSubject(false);
+  private readonly error$$ = new BehaviorSubject<string | null>(null);
+  private readonly prompt$$ = new BehaviorSubject('');
+  private readonly prompt$ = this.prompt$$.asObservable();
+  private readonly chatMessages$$ = new BehaviorSubject<ChatMessage[]>([]);
 
   // Intermediate
-  private results$ = this.prompt$.pipe(
+  private readonly results$ = this.prompt$.pipe(
     switchMap((message) => {
       if (!message) {
         return of(null);
@@ -60,9 +61,9 @@ export class ChatSmartComponent {
       );
     }),
   );
-  private loading$ = this.loading$$.asObservable();
-  private error$ = this.error$$.asObservable();
-  private chatMessages$ = this.results$.pipe(
+  private readonly loading$ = this.loading$$.asObservable();
+  private readonly error$ = this.error$$.asObservable();
+  private readonly chatMessages$ = this.results$.pipe(
     switchMap((chatMessage) => {
       if (!chatMessage) {
         return of([]);
@@ -72,7 +73,8 @@ export class ChatSmartComponent {
     }),
   );
 
-  public vm$ = createVm<PageViewModel>({
+  // Presentation
+  public readonly vm$ = createVm<PageViewModel>({
     loading: [this.loading$, false],
     error: [this.error$, null],
     chatMessages: [this.chatMessages$, []],

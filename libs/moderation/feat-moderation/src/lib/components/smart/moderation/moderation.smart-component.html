@@ -8,8 +8,11 @@
     <textarea id="prompt"
               placeholder="Check how much your text violoates the OpenAI guidelines"
               class="m-0 w-full resize-none border-0 bg-transparent p-0 pr-7 focus:ring-0 focus-visible:ring-0 dark:bg-transparent text-gray-800"
-              [formControl]="form.controls.prompt"></textarea>
-    <button type="submit" class="absolute p-1 rounded-md text-gray-500 bottom-1.5 right-1 md:bottom-2.5 md:right-2 hover:bg-gray-100 dark:hover:text-gray-400 dark:hover:bg-gray-900 disabled:hover:bg-transparent dark:disabled:hover:bg-transparent">Send</button>
+              [formControl]="form.controls.prompt"
+              (keyup.enter)="submit()"
+              [disabled]="vm.loading"></textarea>
+    <button type="submit"
+            [disabled]="vm.loading" class="absolute p-1 rounded-md text-gray-500 bottom-1.5 right-1 md:bottom-2.5 md:right-2 hover:bg-gray-100 dark:hover:text-gray-400 dark:hover:bg-gray-900 disabled:hover:bg-transparent dark:disabled:hover:bg-transparent">Send</button>
 
     <div class="text-red-600" *ngIf="vm.error">{{ vm.error }}</div>
   </form>

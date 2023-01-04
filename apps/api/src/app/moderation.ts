@@ -9,12 +9,20 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-router.post('/moderation', async (req, res) => {
-  const { text } = req.body;
-  console.log(text);
-  const response = await openai.createModeration({
-    input: `${text}`,
-  });
-  // console .log(response);
-  res.send(response.data.results);
+router.post('/moderation', async (req, res, next) => {
+  try {
+    const { text } = req.body;
+
+    if (!text) {
+      throw new Error('No input provided');
+    }
+
+    const response = await openai.createModeration({
+      input: `${text}`,
+    });
+    // console .log(response);
+    res.send(response.data.results);
+  } catch (e) {
+    next(e);
+  }
 });
