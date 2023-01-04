@@ -8,20 +8,15 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-router.get('/image', async (req, res, next) => {
+router.get('/models', async (req, res, next) => {
   try {
-    const { prompt } = req.query;
+    const response = await openai.listModels();
 
-    if (!prompt) {
-      throw new Error('No prompt provided');
+    if (response.data) {
+      if (response.data.data) {
+        res.send(response.data.data);
+      }
     }
-
-    const response = await openai.createImage({
-      prompt: `${prompt}`,
-      // n: 2,
-    });
-
-    res.send(response.data);
   } catch (e) {
     next(e);
   }
