@@ -41,16 +41,33 @@
       "linter": "eslint",
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress",
-      "skipTests": true
+      "skipTests": true,
+      "standalone": true,
+      "routing": true
     },
     "@nrwl/angular:library": {
       "linter": "eslint",
       "unitTestRunner": "jest",
       "skipTests": true,
+      "skipModule": true,
+      "prefix": "app",
       "style": "scss"
     },
     "@nrwl/angular:component": {
-      "style": "scss"
+      "style": "scss",
+      "standalone": true,
+      "skipTests": true
+    },
+    "@nrwl/angular:directive": {
+      "skipTests": true,
+      "standalone": true
+    },
+    "@nrwl/angular:pipe": {
+      "skipTests": true
+    },
+    "@nrwl/angular:service": {
+      "skipTests": true
     }
-  }
+  },
+  "defaultProject": "client"
 }

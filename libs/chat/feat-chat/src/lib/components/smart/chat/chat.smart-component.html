@@ -1,0 +1,19 @@
+<ng-container *ngIf="vm$ | async as vm">
+
+  <h1>Prompt openAI</h1>
+
+  <app-chat-history [chatMessages]="vm.chatMessages"></app-chat-history>
+
+  <app-spinner *ngIf="vm.loading"></app-spinner>
+
+  <form (ngSubmit)="submit()" [formGroup]="form" class="flex flex-col w-full py-2 pl-3 flex-grow md:py-3 md:pl-4 relative border border-black/10 bg-white mb-5 dark:border-gray-900/50 dark:text-white dark:bg-gray-700 rounded-md shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:shadow-[0_0_15px_rgba(0,0,0,0.10)]">
+      <textarea id="prompt"
+                placeholder="Ask a question to Chat GPT"
+                class="m-0 w-full resize-none border-0 bg-transparent p-0 pr-7 focus:ring-0 focus-visible:ring-0 dark:bg-transparent text-gray-800"
+                (keyup.enter)="submit()"
+                [formControl]="form.controls.message"></textarea>
+    <button type="submit" class="absolute p-1 rounded-md text-gray-500 bottom-1.5 right-1 md:bottom-2.5 md:right-2 hover:bg-gray-100 dark:hover:text-gray-400 dark:hover:bg-gray-900 disabled:hover:bg-transparent dark:disabled:hover:bg-transparent">Send</button>
+
+    <div class="text-red-600" *ngIf="vm.error">{{ vm.error | json }}</div>
+  </form>
+</ng-container>

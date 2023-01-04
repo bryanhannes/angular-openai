@@ -13,8 +13,42 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "type:app",
+                "onlyDependOnLibsWithTags": ["type:feat", "type:util", "type:type"],
+              },
+              {
+                "sourceTag": "type:type",
+                "onlyDependOnLibsWithTags": [
+                  "type:type"
+                ],
+              },
+              {
+                "type": "type:ui",
+                "onlyDependOnLibsWithTags": [
+                  "type:ui",
+                  "type:util",
+                  "type:type"
+                ],
+              },
+              {
+                "sourceTag": "type:feat",
+                "onlyDependOnLibsWithTags": ["type:util", "type:type", "type:feat", "type:ui", "type:data-access"],
+              },
+              {
+                "sourceTag": "type:util",
+                "onlyDependOnLibsWithTags": ["type:type", "type:type"],
+              },
+              {
+                "sourceTag": "type:data-access",
+                "onlyDependOnLibsWithTags": ["type:util", "type:type", "type:data-access"],
+              },
+              {
+                "sourceTag": "scope:client",
+                onlyDependOnLibsWithTags: ["scope:client", "scope:shared"],
+              },
+              {
+                "sourceTag": "scope:shared",
+                onlyDependOnLibsWithTags: ["scope:shared"],
               }
             ]
           }

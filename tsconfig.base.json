@@ -14,7 +14,47 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@angular-image-generation/chat/data-access-chat": [
+        "libs/chat/data-access-chat/src/index.ts"
+      ],
+      "@angular-image-generation/chat/feat-chat": [
+        "libs/chat/feat-chat/src/index.ts"
+      ],
+      "@angular-image-generation/chat/type-chat": [
+        "libs/chat/type-chat/src/index.ts"
+      ],
+      "@angular-image-generation/client/feat-shell": [
+        "libs/client/feat-shell/src/index.ts"
+      ],
+      "@angular-image-generation/image/data-access-image": [
+        "libs/image/data-access-image/src/index.ts"
+      ],
+      "@angular-image-generation/image/feat-image": [
+        "libs/image/feat-image/src/index.ts"
+      ],
+      "@angular-image-generation/image/type-image": [
+        "libs/image/type-image/src/index.ts"
+      ],
+      "@angular-image-generation/moderation/data-access-moderation": [
+        "libs/moderation/data-access-moderation/src/index.ts"
+      ],
+      "@angular-image-generation/moderation/feat-moderation": [
+        "libs/moderation/feat-moderation/src/index.ts"
+      ],
+      "@angular-image-generation/moderation/type-moderation": [
+        "libs/moderation/type-moderation/src/index.ts"
+      ],
+      "@angular-image-generation/ui-library/feat-button": [
+        "libs/ui-library/feat-button/src/index.ts"
+      ],
+      "@angular-image-generation/ui-library/feat-header": [
+        "libs/ui-library/feat-header/src/index.ts"
+      ],
+      "@angular-image-generation/ui-library/feat-textarea": [
+        "libs/ui-library/feat-textarea/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
